@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const fetch = require('node-fetch');
 const TurndownService = require('turndown');
 const { program } = require('commander');
@@ -10,7 +11,7 @@ program
 
 program.parse(process.argv);
 
-const filename = program.filename ? program.filename : "website.md";
+const filename = program.filename ? path.normalize(program.filename) : "website.md";
 
 const turndownService = new TurndownService();
 
